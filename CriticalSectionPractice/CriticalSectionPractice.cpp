@@ -17,6 +17,7 @@ int main()
     
     // 併發8個thread對同一個變數 (ClassA裡的_resource)做加減運算
     for (int i = 0; i < 8; ++i) {
+        // 第三個參數原本是要傳入一個無形別指標(LPVOID)，但我們利用它來傳一個數字(int)，因為指標本身就是一個整數，我們傳入一個數字編譯器並不會阻擋
         threadHandle[i] = CreateThread(0, 0, thread_proc, (LPVOID)i, 0, & threadID[i]);
     }
 
